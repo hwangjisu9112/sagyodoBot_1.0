@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('주사위')
-        .setDescription('기본적인 주사위를 던진 값을 출력합니다')
+        .setName('귓속말_주사위')
+        .setDescription('기본적인 주사위를 던진 값을 출력합니다. 결과를 명령어 입력자에게 전달합니다')
         .addIntegerOption(option =>
             option
                 .setName('횟수')
@@ -19,12 +19,17 @@ module.exports = {
                 .setMaxValue(100)
         ),
 
+
     async execute(interaction) {
+
+        const user = interaction.user;
+        const targetDM = await user.createDM(); // 개인 메시지 채널 생성
+
         const diceType = interaction.options.getInteger('종류') // 
         const times = interaction.options.getInteger('횟수'); // 던지는 횟수 정수로 가져오기
 
-        console.log("diceType => " +  diceType)
-        console.log("times => " +   times)
+        console.log("diceType => " + diceType)
+        console.log("times => " + times)
 
         // 옵션 유효성 검사
 
@@ -32,7 +37,7 @@ module.exports = {
             return interaction.reply({ content: '🫠 던지는 횟수는 1~10까지 입력 가능합니다.' });
         }
 
-        if (!diceType || diceType < 1  || diceType > 100) {
+        if (!diceType || diceType < 1 || diceType > 100) {
             return interaction.reply({ content: '🫠 주사위 종류를 선택해주세요. 주사위의 종류는 1 이상인 자연수만 허용합니다' });
         }
 
@@ -56,7 +61,12 @@ module.exports = {
         console.log("total => " + total)
         console.log("formattedResults => " + formattedResults)
 
-        await interaction.reply({ content: `🥠 결과 : ${total} : [ ${formattedResults} ]` });
-        
+
+        targetDM.send({
+            content: `🫢 결과 : ${total} : [ ${formattedResults} ]`, // 주사위 결과 메시지
+          });
+
+        await interaction.reply({ content: '🤫 결과를 개인 메시지로 보냈습니다.' });
+  
     },
 };

@@ -13,10 +13,17 @@ function rollCoC(times, value) {
 
 }
 
+
+
+/**
+ * SlashCommandBuilder를 정의.
+ *
+ * @description 무작위 크툴루의 부름의 탐사자 캐릭터를 작성해주는 명령어.
+ */
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('cc')
-        .setDescription('크툴루의 부름의 탐사자 캐릭터를 위한 특성치 등을 출력합니다'),
+        .setDescription('무작위로 크툴루의 부름의 탐사자 캐릭터를 위한 특성치 등을 출력합니다'),
     async execute(interaction) {
 
         const user = interaction.user;

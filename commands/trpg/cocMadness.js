@@ -3,6 +3,11 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 
+/**
+ * SlashCommandBuilder를 정의.
+ *
+ * @description 무작위 크툴루의 부름의 광기 결과를 작성해주는 명령어.
+ */
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('mad')

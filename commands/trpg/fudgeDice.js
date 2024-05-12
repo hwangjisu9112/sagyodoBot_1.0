@@ -6,6 +6,12 @@
 
 const { SlashCommandBuilder } = require('discord.js');
 
+
+/**
+ * SlashCommandBuilder를 정의.
+ *
+ * @description -, +, 0이라는 값만 존재하는 퍼지 주사위라는 결과를 작성하는 명령어.
+ */
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('퍼지')

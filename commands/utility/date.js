@@ -1,9 +1,15 @@
 const { SlashCommandBuilder } = require('discord.js');
 
+
+/**
+ * SlashCommandBuilder를 정의.
+ *
+ * @description 오늘의 날짜와 요일을 출력하는 명령어.
+ */
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('날짜')
-		.setDescription('날짜'),
+		.setDescription('오늘의 날짜와 요일을 출력'),
 	async execute(interaction) {
 
         const today = new Date(); 
