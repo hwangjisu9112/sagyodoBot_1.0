@@ -89,7 +89,7 @@ client.once(Events.ClientReady, readyClient => {
 
 
 	console.log(`${readyClient.user.tag}가 깨어났다`);
-	console.log(`discord.js 버전` + require('discord.js').version);
+	console.log(`discord.js 버전  -> ` + require('discord.js').version);
 });
 
 
