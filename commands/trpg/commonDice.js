@@ -56,7 +56,7 @@ module.exports = {
         console.log("total => " + total)
         console.log("formattedResults => " + formattedResults)
 
-        await interaction.reply({ content: `🥠 결과 : ${total} : [ ${formattedResults} ]` });
+        await interaction.reply({ content: `>>> 🥠 [${formattedResults} ] \n 결과 : ${total} ` });
         
     },
 };

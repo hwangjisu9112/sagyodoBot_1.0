@@ -38,21 +38,46 @@ module.exports = {
     console.log('selectedCategory:', selectedCategory);
 
     try {
-      const response = await fetch(endpoint); // API 호출
 
-      const jsonString = await response.json(); // JSON 형식으로 데이터 변환
+      /**
+      * API 호출 및 응답 객체
+      *
+      * @type {Response}
+      */
+      const response = await fetch(endpoint);
 
+      /**
+   * JSON 형식으로 변환된 응답 데이터
+   *
+   * @type {Object}
+   */
+      const jsonString = await response.json();
+
+
+      /**
+     * 중괄호, 대괄호, 쌍따옴표, 쉼표 제거된 문자열
+     *
+     * @type {String}
+     */
       let formatted = JSON.stringify(jsonString, null, 2)
-        .replace(/(\{|\}|\[|\]|"|,)/g, ``); // 중괄호, 대괄호, 쌍따옴표, 쉼표 제거
+        .replace(/(\{|\}|\[|\]|"|,)/g, ``);
 
       console.log("formatted -> ", formatted);
       console.log("formatted 길이 -> ", formatted.length);
 
 
-      // API 호출 성공 시, 결과 출력
+      /**
+     * API 호출 성공 여부 판단
+     */
       if (response.ok) {
         // formatted 문자열이 1800자 이상인지 확인하여 분할 출력
         if (formatted.length >= 1800) {
+
+          /**
+        * 1800자 단위로 문자열 분할된 배열
+        *
+        * @type {Array<String>}
+        */
           let chunks = formatted.match(/[\s\S]{1,1800}/g); // 1800자 단위로 데이터를 나눔
           for (let chunk of chunks) {
             await interaction.reply(`📜 **${selectedCategory} 데이터**\n\`\`\`내용\n${chunk}\n\`\`\``);

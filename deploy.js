@@ -16,7 +16,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 /**
- * 커맨드 배열입니다.
+ * 커맨드 배열.
  * 각 커맨드는 SlashCommandBuilder 객체의 toJSON() 메서드를 호출한다
  * @type {Array<Object>}
  */

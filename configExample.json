@@ -1,0 +1,6 @@
+{
+    "TOKEN" : "디스코드 봇 토큰을 입력하세요",
+    "CLIENT_ID" : "디스코드 봇의 아이디를 입력하세요",
+    "GUILD_ID" : "이 디스코드 봇을 사용할 서버의 아이디를 입력하세요",
+    "OPENAI": "https://platform.openai.com/api-keys"  
+ }
