@@ -62,7 +62,7 @@ module.exports = {
         console.log("formattedResults => " + formattedResults)
 
         targetDM.send({
-            content: `>>>🫢 [ ${formattedResults} \n 결과 : ${total} ]`, // 주사위 결과 메시지
+            content: `>>>🫢  ${formattedResults} \n 결과 : ${total} `, // 주사위 결과 메시지
           });
 
         await interaction.reply({ content: '🤫 결과를 개인 메시지로 보냈습니다.' });

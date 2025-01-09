@@ -1,6 +1,4 @@
-
 const { ActionRowBuilder, SlashCommandBuilder, ButtonBuilder, EmbedBuilder } = require('discord.js');
-
 const { general, trpg, game ,all } = require("./help.json");
 
 
