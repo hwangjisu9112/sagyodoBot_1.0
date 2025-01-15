@@ -99,7 +99,7 @@ module.exports = {
 
 
 		/**
- 		* 사용자가 입력한 정보를 포함한 메시지를 보냅니다.
+ 		* 사용자가 입력한 정보를 포함한 메시지를 보냅니다. 
  		*/
 		await submitted.reply({
 			content: notice,

@@ -7,9 +7,11 @@
  * @typedef {import('discord.js').Collection} Collection 컬렉션 클래스
  */
 
-
+// Discord.js 라이브러리에서 필요한 클래스와 객체를 가져온다
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 
+// Node.js의 내장 파일 시스템 모듈(파일 읽고 쓰기 기능)
+// Node.js의 내장 경로 처리 모듈
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -87,15 +89,24 @@ for (const folder of commandFolders) {
 
 client.once(Events.ClientReady, readyClient => {
 
-
 	console.log(`${readyClient.user.tag}가 깨어났다`);
 	console.log(`discord.js 버전  -> ` + require('discord.js').version);
 });
 
-
+/**
+ * InteractionCreate 이벤트를 처리
+ * 사용자가 디스코드 봇과 상호작용(예: 슬래시 명령어 입력)할 때 발생하는 이벤트.
+ *
+ * @event Events.InteractionCreate
+ * @param {import('discord.js').Interaction} interaction - 발생한 상호작용 객체
+ */
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
+	/**
+	 * 입력된 명령어 이름으로 등록된 명령어를 가져옵니다.
+	 * @type {import('./commands').Command | undefined}
+	 */
 	const command = interaction.client.commands.get(interaction.commandName);
 
 	if (!command) {
@@ -103,6 +114,11 @@ client.on(Events.InteractionCreate, async interaction => {
 		return;
 	}
 
+		/**
+		 * 에러가 발생했을 때 이미 응답이 처리되었는지 확인합니다.
+		 * - 응답이 이미 처리되었으면 `followUp`으로 추가 응답을 보냅니다.
+		 * - 응답이 처리되지 않았으면 `reply`로 새로 응답을 보냅니다.
+		 */
 	try {
 		await command.execute(interaction);
 	} catch (error) {
