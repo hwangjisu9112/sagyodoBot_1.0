@@ -83,7 +83,7 @@ module.exports = {
 		});
 
 		if (!submitted) {
-			console.log('모달 입력이 캔슬됐습니다');
+			console.log('장기간 미응답으로 인하여 모달 입력이 캔슬됐습니다');
 			return;
 		}
 

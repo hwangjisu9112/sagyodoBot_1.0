@@ -16,12 +16,13 @@ function initEventAnnounce(client, guildId, notificationChannelId) {
             const events = await guild.scheduledEvents.fetch(); // 서버의 모든 이벤트 가져오기
             const now = new Date();
 
+            
             events.forEach(event => {
                 const startTime = new Date(event.scheduledStartTimestamp); // 이벤트 시작 시간
-                const timeDifference = (startTime - now) / (1000 * 60); // 분 단위로 계산
+                const leftTime = (startTime - now) / (1000 * 60); // 분 단위로 계산
 
                 // 60분 이내로 시작하는 이벤트이면서 알림이 아직 보내지 않은 경우
-                if (timeDifference > 0 && timeDifference <= 60 && !notifiedEvents.has(event.id)) {
+                if (leftTime > 0 && leftTime <= 60 && !notifiedEvents.has(event.id)) {
                     const channel = client.channels.cache.get(notificationChannelId);
                     if (channel && channel.isTextBased()) {
                         channel.send(`⌛ **${event.name}** 이벤트가 60분 후에 시작됩니다!\n🕒 시작 시간: ${startTime.toLocaleString()}\n🔗 [자세히 보기](https://discord.com/events/${guildId}/${event.id})`);
@@ -34,7 +35,7 @@ function initEventAnnounce(client, guildId, notificationChannelId) {
         }
     };
 
-    // 5분마다 실행
+    // 이 함수를 5분마다 실행
     cron.schedule('*/5 * * * *', checkEvents);
 }
 

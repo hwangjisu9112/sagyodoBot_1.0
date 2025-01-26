@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 /**
  * SlashCommandBuilder를 정의.
  *
- * @description 코코포리아에서 크툴루의 부름을 하는 법에 대한 약식 설
+ * @description 코코포리아에서 크툴루의 부름을 하는 법에 대한 약식 설명
  */
 module.exports = {
     data: new SlashCommandBuilder()

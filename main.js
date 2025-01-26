@@ -15,8 +15,10 @@ const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
+const { TOKEN, GUILD_ID, ANNOUNCE_CHANNEL_ID } = require('./config.json'); // 설정 파일에서 값 가져오기
 
-const { TOKEN } = require('./config.json');
+const { morningCall } = require('./schedule/morningCall'); // 아침 인사 모듈 가져오기
+
 
 /**
  * 새로운 클라이언트 인스턴스 생성
@@ -81,17 +83,18 @@ for (const folder of commandFolders) {
 	}
 }
 
-/**
- * 클라이언트가 준비되면 이 코드를 한 번만 실행, 실행된 봇의 명칭 + 개발한 디스코드 버전
- * (이벤트 리스너 등록)
- * @param {Client<true>} readyClient 준비된 클라이언트 객체
- */
 
 client.once(Events.ClientReady, readyClient => {
 
 	console.log(`${readyClient.user.tag}가 깨어났다`);
-	console.log(`discord.js 버전  -> ` + require('discord.js').version);
+	console.log(`discord.js 버전  : ` + require('discord.js').version);
+	console.log(`봇의 서버 시간대: ${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
+
+
+    // 아침 인사 기능 초기화
+    morningCall(client, GUILD_ID, ANNOUNCE_CHANNEL_ID);
 });
+
 
 /**
  * InteractionCreate 이벤트를 처리
@@ -124,9 +127,9 @@ client.on(Events.InteractionCreate, async interaction => {
 	} catch (error) {
 		console.error(error);
 		if (interaction.replied || interaction.deferred) {
-			await interaction.followUp({ content: '🍨 명령어 실행 중 에러가 발생했습니다', ephemeral: true });
+			await interaction.followUp({ content: ' followUp -> 🍨 명령어 실행 중 에러가 발생했습니다', ephemeral: true });
 		} else {
-			await interaction.reply({ content: '🍨 명령어 실행 중 에러가 발생했습니다', ephemeral: true });
+			await interaction.reply({ content: 'reply -> 🍨 명령어 실행 중 에러가 발생했습니다', ephemeral: true });
 		}
 	}
 });
