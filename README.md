@@ -40,5 +40,7 @@ https://discord.com/developers/docs/quick-start/getting-started
 
 
 
-
+2025.01
+node-cron을 활용 매일 지정된 시간에 인사를 하는 기능 추가.
+이 기능을 활용하기 위해  config.json파일에 "ANNOUNCE_CHANNEL_ID": "-"에 봇이 채팅을 날릴 채널의 아이디를 입력하여야 함.
 
