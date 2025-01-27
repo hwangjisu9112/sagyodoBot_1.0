@@ -97,10 +97,10 @@ function determineWinner(userChoice, botChoice) {
 
   switch (userChoice) {
     case 'Scissors':
-      return botChoice === 'Paper' ? '이겼다!' : '졌다...';
+      return botChoice === 'Paper' ? '이겼다!' : '허접~♡';
     case 'Rock':
-      return botChoice === 'Scissors' ? '이겼다!' : '졌다...';
+      return botChoice === 'Scissors' ? '이겼다!' : '허접~♡';
     case 'Paper':
-      return botChoice === 'Rock' ? '이겼다!' : '졌다...';
+      return botChoice === 'Rock' ? '이겼다!' : '허접~♡';
   }
 }

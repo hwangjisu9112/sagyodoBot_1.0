@@ -14,17 +14,17 @@ module.exports = {
         .setRequired(true)
         .addChoices([ // 'addChoices'에 객체 배열 직접 입력
           { name: '클래스', value: 'classes' },
-          { name: '룰', value: 'rule-sections' },
+       // { name: '룰', value: 'rule-sections' },
           { name: '마법 학파', value: 'magic-schools' },
           { name: '무기 분류', value: 'weapon-properties' },
           { name: '기술', value: 'skills' },
-          { name: '몬스터', value: 'monsters' },
+       // { name: '몬스터', value: 'monsters' },
           { name: '서브 종족', value: 'subraces' },
           { name: '서브 클래스', value: 'subclasses' },
           { name: '성향', value: 'alignments' },
           { name: '어빌리티', value: 'ability-scores' },
           { name: '언어', value: 'languages' },
-          { name: '주문', value: 'spells' },
+        //{ name: '주문', value: 'spells' },
           { name: '종족', value: 'races' }
         ])
         .setRequired(true)
@@ -70,20 +70,20 @@ module.exports = {
      * API 호출 성공 여부 판단
      */
       if (response.ok) {
-        // formatted 문자열이 1800자 이상인지 확인하여 분할 출력
+        // formatted 문자열이 1800 이상인지 확인하여 분할 출력
         if (formatted.length >= 1800) {
 
           /**
-        * 1800자 단위로 문자열 분할된 배열
+        * 1500 단위로 문자열 분할된 배열
         *
         * @type {Array<String>}
         */
-          let chunks = formatted.match(/[\s\S]{1,1800}/g); // 1800자 단위로 데이터를 나눔
+          let chunks = formatted.match(/[\s\S]{1,1800}/g); // 1800 단위로 데이터를 나눔
           for (let chunk of chunks) {
             await interaction.reply(`📜 **${selectedCategory} 데이터**\n\`\`\`내용\n${chunk}\n\`\`\``);
           }
         } else {
-          // 1800자 이하면 한 번에 출력
+          // 1800 이하면 한 번에 출력
           interaction.reply(`📜 **${selectedCategory} 데이터**\n\`\`\`내용\n${formatted}\n\`\`\``);
         }
       } else {

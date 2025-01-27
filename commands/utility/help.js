@@ -55,9 +55,7 @@ module.exports = {
       filter: (component) => component.customId === 'general' || component.customId === 'game' || component.customId === 'trpg' || component.customId === 'all',
       time: 15000 // 버튼 클릭 대기 시간 (15초)
     });
-
-
-
+    
     collector.on('collect', async (component) => {
 
       try {
