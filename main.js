@@ -17,7 +17,9 @@ const path = require('node:path');
 
 const { TOKEN, GUILD_ID, ANNOUNCE_CHANNEL_ID } = require('./config.json'); // 설정 파일에서 값 가져오기
 
-const { morningCall } = require('./schedule/morningCall'); // 아침 인사 모듈 가져오기
+//const { morningCall } = require('./schedule/morningCall'); // 아침 인사 모듈 가져오기
+const schedules = require('./cronWork'); 
+
 
 
 /**
@@ -54,8 +56,8 @@ for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-	console.log("commandsPath -> " + commandsPath)
-	console.log("commandFiles -> " + commandFiles)
+	// console.log("commandsPath -> " + commandsPath)
+	// console.log("commandFiles -> " + commandFiles)
 	/**
    * 모든 커맨드 파일 순환 처리
    */
@@ -64,8 +66,8 @@ for (const folder of commandFolders) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
 
-		//console.log("filePath -> " + filePath)
-		//console.log("command -> " + command)
+		// console.log("filePath -> " + filePath)
+		// console.log("command -> " + command)
 
 
 		/**
@@ -90,9 +92,10 @@ client.once(Events.ClientReady, readyClient => {
 	console.log(`discord.js 버전  : ` + require('discord.js').version);
 	console.log(`봇의 서버 시간대: ${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
 
+    console.log(schedules);
 
-    // 아침 인사 기능 초기화
-    morningCall(client, GUILD_ID, ANNOUNCE_CHANNEL_ID);
+	schedules.morningCall(client, GUILD_ID, ANNOUNCE_CHANNEL_ID);
+    schedules.eventAnnounce(client, GUILD_ID, ANNOUNCE_CHANNEL_ID);
 });
 
 

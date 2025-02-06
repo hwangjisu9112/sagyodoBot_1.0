@@ -25,7 +25,7 @@ function dailyMessage() {
  */
 function morningCall(client, guildId, notificationChannelId) {
     // 매일 오전 8시에 실행(개량 필요)
-    cron.schedule('*/5 * * * *', async () => {
+    cron.schedule('0 8 * * *', async () => {
         try {
             const guild = await client.guilds.fetch(guildId); // 서버 정보 가져오기
             const channel = guild.channels.cache.get(notificationChannelId); // 채널 ID로 채널 가져오기
@@ -45,4 +45,4 @@ function morningCall(client, guildId, notificationChannelId) {
     });
 }
 
-module.exports = { morningCall };
+module.exports = morningCall;
