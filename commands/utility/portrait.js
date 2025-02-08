@@ -1,4 +1,4 @@
-// 사진 명령어의 사용
+// 사진 명령어. 
 
 const { SlashCommandBuilder } = require('discord.js');
 
