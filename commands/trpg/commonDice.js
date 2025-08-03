@@ -7,7 +7,7 @@ module.exports = {
         .addIntegerOption(option =>
             option
                 .setName('횟수')
-                .setDescription('주사위 던지는 횟수를 입력하세요 (최소 1, 최대10)')
+                .setDescription('주사위 던지는 횟수를 입력하세요 (최소 1, 최대 10)')
                 .setRequired(true)
                 .setMinValue(1)
                 .setMaxValue(10))

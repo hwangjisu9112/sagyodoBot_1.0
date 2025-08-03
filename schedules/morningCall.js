@@ -13,7 +13,7 @@ function dailyMessage() {
     if (holiday[today]) {
         return holiday[today]; // 공휴일 메시지
     }
-    return '🧋 안녕 힘세고 강한 아침!';
+    return '오늘 하루도 고생하셨습니다';
 }
 
 /**

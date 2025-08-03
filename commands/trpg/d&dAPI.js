@@ -3,6 +3,7 @@
 */
 const { SlashCommandBuilder } = require('discord.js');
 const fetch = require('node-fetch');
+// import fetch from 'node-fetch'; node fetch 3버전을 사용하기 위해서는 좌측 문법을 사용... 
 
 module.exports = {
   data: new SlashCommandBuilder()
