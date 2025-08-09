@@ -1,5 +1,5 @@
 # Node.js 공식 이미지 사용 (LTS 버전)
-FROM node:20-alpine
+FROM node:20.10-alpine
 
 # 작업 디렉토리 설정
 WORKDIR /app
