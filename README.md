@@ -45,5 +45,7 @@ https://discord.com/developers/docs/quick-start/getting-started
 4-2) 도커 컴포즈에서 수행
 
 ①　docker-compose build --no-cache
+
 ②　docker-compose up -d
+
 ③  docker-compose logs -f
