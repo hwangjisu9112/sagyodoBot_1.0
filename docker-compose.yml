@@ -1,16 +1,7 @@
-version: '3.8'
+version: "3.8"
 
 services:
   discord-bot:
     build: .
-    container_name: sagyodo-bot
-    volumes:
-      # config.json을 컨테이너에 마운트
-      - ./config.json:/app/config.json:ro
+    container_name: sagyotdo-bot
     restart: unless-stopped
-    # 로그 설정
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
