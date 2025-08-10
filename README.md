@@ -10,6 +10,8 @@ discord.js 14.15.2
 
 eslint 9.1.1
 
+docker, dockerCompose
+
 google cloud plattform
 
 ◇ 봇 사용법
@@ -30,6 +32,8 @@ https://discord.com/developers/docs/quick-start/getting-started
 
 4. 작동법
 
+
+4-1) 도커 없이 실행
 봇이 정상적으로 내 서버에 초대되었다면, 비쥬얼 스튜디오 등의 터미널에서 아래의 명령어들을 순서대로 입력한다.
 
 ①　npm install 
@@ -38,4 +42,8 @@ https://discord.com/developers/docs/quick-start/getting-started
 
 ③　node .\main.js
 
+4-2) 도커 컴포즈에서 수행
 
+①　docker-compose build --no-cache
+②　docker-compose up -d
+③  docker-compose logs -f
