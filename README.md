@@ -4,15 +4,15 @@ sagyodoBot은 디스코드 그룹 <<TRPG집회소>>에서 비영리적 목적으
 
 ◇ 개발에 사용한 환경 및 언어
 
-node.js v20.10.0
+・node.js v20.10.0
 
-discord.js 14.15.2
+・discord.js 14.15.2
 
-eslint 9.1.1
+・eslint 9.1.1
 
-docker, dockerCompose
+・docker, dockerCompose
 
-google cloud plattform
+・google cloud plattform
 
 ◇ 봇 사용법
 
